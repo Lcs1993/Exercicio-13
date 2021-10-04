@@ -13,6 +13,7 @@ import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.AbstractListModel;
 
 public class TelaContador {
 
@@ -85,6 +86,15 @@ public class TelaContador {
 		frame.getContentPane().add(sliPasso);
 		
 		JList lstCont = new JList();
+		lstCont.setModel(new AbstractListModel() {
+			String[] values = new String[] {};
+			public int getSize() {
+				return values.length;
+			}
+			public Object getElementAt(int index) {
+				return values[index];
+			}
+		});
 		
 		JButton btnCont = new JButton("Contar");
 		btnCont.addActionListener(new ActionListener() {
@@ -104,7 +114,7 @@ public class TelaContador {
 		frame.getContentPane().add(btnCont);
 		
 		
-		lstCont.setBounds(344, 181, 1, 1);
+		lstCont.setBounds(324, 150, 100, 100);
 		frame.getContentPane().add(lstCont);
 		
 		JLabel lblInicio = new JLabel("0");
